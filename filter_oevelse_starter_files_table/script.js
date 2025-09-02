@@ -11,18 +11,127 @@ const vehicles = [
   { type: "Løbehjul", passengers: 1, isElectric: true },
 ];
 const tbodyPointer = document.querySelector("tbody");
+const btn_eldrevne = document.querySelector("#eldrevne");
+const btn_mereEndTo = document.querySelector("#mereEndTo");
+const btn_jonas = document.querySelector("#jonas");
+const btn_rugbrød = document.querySelector("#rugbrod");
+const btn_showAll = document.querySelector("#showAll");
+
 showTheseVehicles(vehicles);
 
+btn_eldrevne.addEventListener("click", () => showTheseVehicles(onlyElectricVehicles));
+btn_mereEndTo.addEventListener("click", () => showTheseVehicles(onlyTwoSeatVehicles));
+btn_jonas.addEventListener("click", () => showTheseVehicles(ownedByJonas));
+btn_rugbrød.addEventListener("click", () => showTheseVehicles(rugbrødMedSæder));
+btn_showAll.addEventListener("click", () => showTheseVehicles(vehicles));
+
+// showTheseVehicles(vehicles);
+
+//*********************************/
+
+function isElektrisk(vehicles) {
+  if (vehicles.isElectric === true) {
+    return true;
+  }
+}
+const onlyElectricVehicles = vehicles.filter(isElektrisk);
+console.log("onlyElectricVehicles", onlyElectricVehicles);
+
+// showTheseVehicles(onlyElectricVehicles);
+
+//*********************************/
+
+function isTwoSeats(vehicles) {
+  if (vehicles.passengers > 2) {
+    return true;
+  }
+}
+
+const onlyTwoSeatVehicles = vehicles.filter(isTwoSeats);
+console.log("onlyTwoSeatVehicles", onlyTwoSeatVehicles);
+
+// showTheseVehicles(onlyTwoSeatVehicles);
+
+//*********************************/
+
+function isOwnedByJonas(vehicles) {
+  if (vehicles.ownedBy === "Jonas") {
+    return true;
+  }
+}
+
+const ownedByJonas = vehicles.filter(isOwnedByJonas);
+console.log("OwnedByJonas", ownedByJonas);
+
+// showTheseVehicles(ownedByJonas);
+
+//*********************************/
+
+function rugbrodMedFlere(vehicles) {
+  if (vehicles.fuel === "Rugbrød" && vehicles.passengers > 1) {
+    return true;
+  }
+}
+
+const rugbrødMedSæder = vehicles.filter(rugbrodMedFlere);
+console.log("rugbrødMedSæder", rugbrødMedSæder);
+
+// showTheseVehicles(rugbrødMedSæder);
+
+// function showTheseVehicles(arr) {
+//   arr.forEach((each) => {
+//     tbodyPointer.innerHTML += `<tr>
+//   <td>${each.type}</td>
+//   <td>${each.fuel}</td>
+//   <td>${each.passengers}</td>
+//   <td>${each.stops}</td>
+//   <td>${each.ownedBy}</td>
+//   <td>${each.isElectric}</td>
+//   <td>${each.isTandem}</td>
+// </tr>`;
+//   });
+// }
 function showTheseVehicles(arr) {
+  tbodyPointer.innerHTML = "";
+
+  let sanitizedStops;
   arr.forEach((each) => {
+    // console.log("each.stops", each.stops);
+    if (each.stops === undefined) {
+      sanitizedStops = " ";
+    } else {
+      sanitizedStops = each.stops;
+    }
+    // console.log("each.ownedBy", each.ownedBy);
+    let ifOwnedBy;
+    if (each.ownedBy === undefined) {
+      ifOwnedBy = " ";
+    } else {
+      ifOwnedBy = each.ownedBy;
+    }
+
+    let ifElektrisk;
+    if (each.isElectric === undefined) {
+      ifElektrisk = " ";
+    } else {
+      ifElektrisk = "X";
+    }
+
+    let ifTandem;
+    if (each.isTandem === undefined) {
+      ifTandem = " ";
+    } else {
+      ifTandem = "X";
+    }
+
     tbodyPointer.innerHTML += `<tr>
   <td>${each.type}</td>
   <td>${each.fuel}</td>
   <td>${each.passengers}</td> 
-  <td>${each.stops}</td>
-  <td>${each.ownedBy}</td>
-  <td>${each.isElectric}</td>
-  <td>${each.isTandem}</td>
+  <td>${sanitizedStops}</td>
+  <td>${ifOwnedBy}</td>
+  <td>${ifElektrisk}</td>
+  <td>${ifTandem}</td>
 </tr>`;
   });
 }
