@@ -65,6 +65,10 @@ result = people.unshift("luna");
 console.log("people", people);
 console.log("result", result);
 
+//tilføjer
+
 result = people.shift("luna");
 console.log("people", people);
 console.log("result", result);
+
+//fjerner
