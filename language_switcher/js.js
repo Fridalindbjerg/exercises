@@ -15,7 +15,7 @@ const texts = {
 };
 let locale = "da";
 
-document.querySelector("#language-switcher").addEventListener("change", (event) => changeEvent());
+document.querySelector("#language-switcher").addEventListener("change", (event) => changeEvent(event));
 
 function changeEvent(event) {
   locale = event.target.value;
