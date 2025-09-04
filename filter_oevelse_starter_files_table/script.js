@@ -25,8 +25,6 @@ btn_jonas.addEventListener("click", () => showTheseVehicles(ownedByJonas));
 btn_rugbrød.addEventListener("click", () => showTheseVehicles(rugbrødMedSæder));
 btn_showAll.addEventListener("click", () => showTheseVehicles(vehicles));
 
-// showTheseVehicles(vehicles);
-
 //*********************************/
 
 function isElektrisk(vehicles) {
@@ -36,8 +34,6 @@ function isElektrisk(vehicles) {
 }
 const onlyElectricVehicles = vehicles.filter(isElektrisk);
 console.log("onlyElectricVehicles", onlyElectricVehicles);
-
-// showTheseVehicles(onlyElectricVehicles);
 
 //*********************************/
 
@@ -50,8 +46,6 @@ function isTwoSeats(vehicles) {
 const onlyTwoSeatVehicles = vehicles.filter(isTwoSeats);
 console.log("onlyTwoSeatVehicles", onlyTwoSeatVehicles);
 
-// showTheseVehicles(onlyTwoSeatVehicles);
-
 //*********************************/
 
 function isOwnedByJonas(vehicles) {
@@ -62,8 +56,6 @@ function isOwnedByJonas(vehicles) {
 
 const ownedByJonas = vehicles.filter(isOwnedByJonas);
 console.log("OwnedByJonas", ownedByJonas);
-
-// showTheseVehicles(ownedByJonas);
 
 //*********************************/
 
@@ -76,21 +68,6 @@ function rugbrodMedFlere(vehicles) {
 const rugbrødMedSæder = vehicles.filter(rugbrodMedFlere);
 console.log("rugbrødMedSæder", rugbrødMedSæder);
 
-// showTheseVehicles(rugbrødMedSæder);
-
-// function showTheseVehicles(arr) {
-//   arr.forEach((each) => {
-//     tbodyPointer.innerHTML += `<tr>
-//   <td>${each.type}</td>
-//   <td>${each.fuel}</td>
-//   <td>${each.passengers}</td>
-//   <td>${each.stops}</td>
-//   <td>${each.ownedBy}</td>
-//   <td>${each.isElectric}</td>
-//   <td>${each.isTandem}</td>
-// </tr>`;
-//   });
-// }
 function showTheseVehicles(arr) {
   tbodyPointer.innerHTML = "";
 
