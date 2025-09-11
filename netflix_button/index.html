@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="hide">næste afsnit</button>
+    <script src="js.js"></script>
+  </body>
+  <style>
+    body {
+      height: 100vh;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .fill-btn {
+      padding: 10px 20px;
+      border: 2px solid #1e90ff;
+      background: linear-gradient(to left, #fff 50%, #1e90ff 50%) right;
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      color: black;
+      animation: fill 3s forwards;
+    }
+
+    @keyframes fill {
+      to {
+        background-position: left;
+      }
+    }
+
+    .background {
+      background-color: #97b0c8;
+    }
+
+    .filledButton {
+      padding: 10px 20px;
+      border: 2px solid #1e90ff;
+      background: #1e90ff;
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      color: black;
+    }
+  </style>
+</html>
